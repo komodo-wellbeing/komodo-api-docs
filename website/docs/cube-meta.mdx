@@ -1,0 +1,67 @@
+---
+id: cube-meta
+title: Meta
+slug: /cube/meta/
+---
+
+import ApiRequest from '@site/src/components/ApiRequest';
+
+# Meta
+
+Meta-information for the cubes defined in the data model can be retrieved.
+
+<ApiRequest
+    type="GET"
+    url="/cube/v1/meta"
+    headers={[{ name: 'Authorization', description: 'Token returned by authentication process' }]}
+    responses={[
+        {
+            status: '200 Successful',
+            color: 'green',
+            example: `{
+    "cubes": [
+        "public": true,
+        "name": "GroupMembers",
+        "title": "Group Members",
+        "dimensions": [
+            {
+                "name": "GroupMembers.id",
+                "title": "Group Members Id",
+                "type": "number",
+                "shortTitle": "Id",
+                "suggestFilterValues": true,
+                "isVisible": true,
+            },
+            {
+                "name": "GroupMembers.name",
+                "title": "Group Members Name",
+                "type": "string",
+                "shortTitle": "Name",
+                "suggestFilterValues": true,
+                "isVisible": true,
+            },
+            ...
+        ],
+        "measures": [
+            {
+                "name": "GroupMembers.count",
+                "title": "Group Members Count",
+                "shortTitle": "Count",
+                "type": "number",
+                "aggType": "count",
+                "isVisible": true,
+            },
+            ...
+        ],
+        "segments": [...],
+        ...
+    ]
+}`,
+        },
+        {
+            status: '401 Forbidden',
+            description: 'Missing or invalid authentication token',
+            color: 'red',
+        },
+    ]}
+/>
