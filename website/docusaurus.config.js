@@ -14,7 +14,7 @@ const config = {
 
     // GitHub pages deployment config.
     organizationName: 'komodo-wellbeing',
-    projectName: 'komodo-api-docs',
+    projectName: 'komodo-api-docs.github.io',
 
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
