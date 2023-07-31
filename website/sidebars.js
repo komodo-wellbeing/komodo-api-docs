@@ -3,9 +3,9 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
     docs: {
-        Authentication: ['auth'],
+        Introduction: ['welcome', 'environments', 'auth'],
         'REST API': ['rest'],
-        'Cube API': ['cube', 'cube-meta'],
+        'Cube API': ['cube', 'cube-meta', 'cube-load'],
     },
 };
 

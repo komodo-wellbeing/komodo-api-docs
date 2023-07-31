@@ -1,13 +1,13 @@
 ---
 id: auth
-title: How to authenticate
-slug: /
+title: Authentication
+slug: /auth/
 ---
 
 import ApiRequest from '@site/src/components/ApiRequest';
 import CodeBlock from '@theme/CodeBlock';
 
-# How to authenticate
+# Authentication
 
 To access the API you need to obtain an integration API key in Komodo. This can be done by
 either:
@@ -15,13 +15,17 @@ either:
 -   Contacting Komodo to issue an organisation-based API key.
 -   Generate an organisation-based API key in Komodo via Settings > Integrations > Create an Integration.
 
+Any requests to the REST & Cube APIs must include an `Authorization` header, with the value set to the returned token.
+
+## Request
+
 <ApiRequest
     type="POST"
     url="/rest/v1/auth/login"
-    headers={[{ name: '__x-api-key__', description: 'Organisation-based API key issued by Komodo' }]}
+    request={{ headers: [{ name: '__x-api-key__', description: 'Organisation-based API key issued by Komodo' }] }}
     responses={[
         {
-            status: '200 Successful',
+            status: 200,
             description:
                 'A successful request will return a short-lived token that can be used to retrieve information from both our REST & Cube APIs',
             color: 'green',
@@ -30,16 +34,14 @@ either:
 }`,
         },
         {
-            status: '400 Bad Request',
+            status: 400,
             description: 'Missing API key',
             color: 'red',
         },
         {
-            status: '401 Forbidden',
+            status: 401,
             description: 'Invalid API key',
             color: 'red',
         },
     ]}
 />
-
-Any requests to the REST & Cube APIs must include an `Authorization` header, with the value set to the returned token.

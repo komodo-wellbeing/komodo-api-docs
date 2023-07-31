@@ -1,22 +1,24 @@
 ---
 id: cube-meta
-title: Meta
+title: Meta Information
 slug: /cube/meta/
 ---
 
 import ApiRequest from '@site/src/components/ApiRequest';
 
-# Meta
+# Meta Information
 
 Meta-information for the cubes defined in the data model can be retrieved.
+
+## Request
 
 <ApiRequest
     type="GET"
     url="/cube/v1/meta"
-    headers={[{ name: 'Authorization', description: 'Token returned by authentication process' }]}
+    request={{ headers: [{ name: 'Authorization', description: 'Token returned by authentication process' }] }}
     responses={[
         {
-            status: '200 Successful',
+            status: 200,
             color: 'green',
             example: `{
     "cubes": [
@@ -59,9 +61,13 @@ Meta-information for the cubes defined in the data model can be retrieved.
 }`,
         },
         {
-            status: '401 Forbidden',
+            status: 401,
             description: 'Missing or invalid authentication token',
             color: 'red',
         },
     ]}
 />
+
+## External Links
+
+[Cube REST API](https://cube.dev/docs/reference/rest-api#v1meta)

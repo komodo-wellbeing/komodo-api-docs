@@ -1,0 +1,51 @@
+.apiRequest {
+    border: solid #3da2eb 4px;
+    border-radius: 8px;
+}
+
+.headingTag {
+    padding: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #3da2eb;
+    font-weight: bold;
+    font-size: 24px;
+    width: 120px;
+    text-align: center;
+}
+
+.contents {
+    padding: 14px;
+}
+
+.h1 {
+    font-size: 20px;
+}
+
+.h2 {
+    font-size: 18px;
+}
+
+.h3 {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.baseUrl {
+    color: #3da2eb;
+}
+
+.tag {
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.blueTag {
+    padding: 4px;
+    border-radius: 8px;
+    background-color: #3da2eb;
+}
+
+.response + .response {
+    margin-top: 10px;
+}

@@ -22,7 +22,7 @@ Measures are aggregations of data.
 
 Segments are predefined filters.
 
-## External links
+## External Links
 
 -   [Cube REST API](https://cube.dev/docs/reference/rest-api)
 -   [Cube Dimensions](https://cube.dev/docs/product/data-modeling/reference/dimensions)

@@ -1,0 +1,90 @@
+---
+id: cube-load
+title: Loading Data
+slug: /cube/load/
+---
+
+import ApiRequest from '@site/src/components/ApiRequest';
+
+# Loading Data
+
+You can get the data for a given query.
+
+## Request
+
+<ApiRequest
+    type="GET"
+    url="/cube/v1/load"
+    request={{
+        headers: [{ name: 'Authorization', description: 'Token returned by authentication process' }],
+        example: `{
+    "dimensions": ["Students.id", "Students.firstname", "Students.lastname"],
+    "measures": [],
+    "segments": [],
+}`,
+    }}
+    responses={[
+        {
+            status: 200,
+            color: 'green',
+            example: `{
+    // The query passed in requests params
+    "query": {
+        "dimensions": ["Students.id", "Students.firstname", "Students.lastname"],
+        "measures": [],
+        "segments": [],
+    },
+    // Formatted dataset of query results
+    "data": [
+        {
+            "Students.id": "1",
+            "Students.firstname": "Billie",
+            "Students.lastname": "Eyelash",
+        },
+        {
+            "Students.id": "2",
+            "Students.firstname": "Denzel",
+            "Students.lastname": "Oregon",
+        },
+        {
+            "Students.id": "3",
+            "Students.firstname": "Vin",
+            "Students.lastname": "Petrol",
+        },
+        ...
+    ],
+    // Metadata for query
+    "annotation": {
+        "dimensions": {
+            "Students.id": {
+                "title": "Students Id",
+                "shortTitle": "Id",
+                "type": "number",
+            },
+            "Students.firstname": {
+                "title": "Students Firstname",
+                "shortTitle": "Firstname",
+                "type": "string",
+            },
+            "Students.lastname": {
+                "title": "Students Lastname",
+                "shortTitle": "Lastname",
+                "type": "string",
+            },
+        },
+        "measures": {},
+        "segments": {},
+    }
+}`,
+        },
+        {
+            status: 401,
+            description: 'Missing or invalid authentication token',
+            color: 'red',
+        },
+    ]}
+/>
+
+## External Links
+
+[Cube REST API](https://cube.dev/docs/reference/rest-api#v1load)

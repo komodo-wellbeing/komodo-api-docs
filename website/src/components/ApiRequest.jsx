@@ -2,41 +2,60 @@
 
 import React from 'react';
 import CodeBlock from '@theme/CodeBlock';
+import styles from './ApiRequest.module.css';
 
 const COLORS = {
-    blue: '#3DA2EB',
     green: '#2CDD9C',
     red: '#E63B19',
 };
 
-export default function ApiRequest({ type, url, headers, responses }) {
-    const style = { border: `solid ${COLORS.blue} 4px`, borderRadius: 8, padding: 14 };
-    const h1Style = { fontSize: 24 };
-    const h2Style = { fontSize: 18 };
-    const tagStyle = { padding: 4, borderRadius: 8 };
+const RESPONSE_STATUSES = {
+    200: { label: 'Successful', color: COLORS.green },
+    400: { label: 'Bad Request', color: COLORS.red },
+    401: { label: 'Forbidden', color: COLORS.red },
+};
 
+export default function ApiRequest({ type, url, request, responses }) {
     return (
-        <div style={style}>
-            <h1 style={h1Style}>
-                🚀 <span style={{ fontWeight: 'bold' }}>{type}</span> <span>https://api.komodowellbeing.com{url}</span>
-            </h1>
-            <h2 style={h2Style}>Headers</h2>
-            <ul>
-                {headers.map((header) => (
-                    <li>
-                        <span style={{ backgroundColor: COLORS.blue, ...tagStyle }}>{header.name}</span>{' '}
-                        {header.description}
-                    </li>
-                ))}
-            </ul>
-            {responses.length > 0 && (
-                <>
-                    <h2 style={h2Style}>Responses</h2>
-                    <ul>
+        <div className={styles.apiRequest}>
+            <div className={styles.headingTag}>🚀 {type}</div>
+            <div className={styles.contents}>
+                <h1 className={styles.h1}>
+                    <span className={styles.baseUrl}>BASE_URL</span>
+                    {url}
+                </h1>
+                {request && (
+                    <>
+                        <h2 className={styles.h2}>Request</h2>
+                        {request.headers && request.headers.length > 0 && (
+                            <>
+                                <h3 className={styles.h3}>Headers</h3>
+                                <ul>
+                                    {request.headers.map((header) => (
+                                        <li>
+                                            <span className={styles.blueTag}>{header.name}</span> {header.description}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </>
+                        )}
+                        {request.example && (
+                            <CodeBlock language="json" showLineNumbers>
+                                {request.example}
+                            </CodeBlock>
+                        )}
+                    </>
+                )}
+                {responses && responses.length > 0 && (
+                    <>
+                        <h2 className={styles.h2}>Responses</h2>
                         {responses.map((response) => (
-                            <li>
-                                <span style={{ backgroundColor: COLORS[response.color], ...tagStyle }}>
-                                    {response.status}
+                            <div className={styles.response}>
+                                <span
+                                    style={{ backgroundColor: RESPONSE_STATUSES[response.status].color }}
+                                    className={styles.tag}
+                                >
+                                    {response.status} {RESPONSE_STATUSES[response.status].label}
                                 </span>
                                 {response.description && ` ${response.description}`}
                                 {response.example && (
@@ -44,11 +63,11 @@ export default function ApiRequest({ type, url, headers, responses }) {
                                         {response.example}
                                     </CodeBlock>
                                 )}
-                            </li>
+                            </div>
                         ))}
-                    </ul>
-                </>
-            )}
+                    </>
+                )}
+            </div>
         </div>
     );
 }
