@@ -49,3 +49,7 @@
 .response + .response {
     margin-top: 10px;
 }
+
+.responseExample {
+    margin-top: 4px;
+}

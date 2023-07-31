@@ -6,7 +6,7 @@ slug: /dictionary/
 
 ## Organisation
 
-An Organisation represents a school or any other institution that uses Komodo.
+An "Organisation" represents a school or any other institution that uses Komodo.
 
 ### _Relationships_
 
@@ -16,7 +16,7 @@ An Organisation represents a school or any other institution that uses Komodo.
 
 ## Student
 
-A Student represents a student that an [Organisation](#organisation) has.
+A "Student" represents a student that an [Organisation](#organisation) has.
 
 ### _Relationships_
 
@@ -27,7 +27,7 @@ A Student represents a student that an [Organisation](#organisation) has.
 
 ## Group
 
-A Group represents a grouping of [Students](#student) that an [Organisation](#organisation) has, e.g. a school house.
+A "Group" represents a grouping of [Students](#student) that an [Organisation](#organisation) has, e.g. a school house.
 
 ### _Relationships_
 
@@ -36,7 +36,7 @@ A Group represents a grouping of [Students](#student) that an [Organisation](#or
 
 ## Year
 
-A Year represents a year grouping of [Students](#student) that an [Organisation](#organisation) has, e.g. 1st year, 2nd year.
+A "Year" represents a year grouping of [Students](#student) that an [Organisation](#organisation) has, e.g. 1st year, 2nd year.
 
 ### _Relationships_
 
@@ -45,7 +45,7 @@ A Year represents a year grouping of [Students](#student) that an [Organisation]
 
 ## Metric
 
-A Metric represents a metric that may be associated with a given survey question, e.g. Homesickness, School Workload.
+A "Metric" represents a metric that may be associated with a given [Survey Library Question](#survey-library-question), e.g. Homesickness, School Workload.
 
 ### _Relationships_
 
@@ -55,7 +55,7 @@ A Metric represents a metric that may be associated with a given survey question
 
 ## Metric Theme
 
-A Metric Theme represents a grouping of [Metrics](#metric), e.g. Achievement & Learning, Emotional Wellbeing.
+A "Metric Theme" represents a grouping of [Metrics](#metric), e.g. Achievement & Learning, Emotional Wellbeing.
 
 ### _Relationships_
 
@@ -63,7 +63,7 @@ A Metric Theme represents a grouping of [Metrics](#metric), e.g. Achievement & L
 
 ## Survey Library Question
 
-A Survey Library Question represents a survey question that is set up in Komodo, e.g. "I enjoy learning at school".
+A "Survey Library Question" represents a survey question that is set up in Komodo, e.g. "I enjoy learning at school".
 
 ### _Relationships_
 
@@ -71,7 +71,7 @@ A Survey Library Question represents a survey question that is set up in Komodo,
 
 ## Normalised Survey Response
 
-A Normalised Survey Response represents a [Student's](#student) responses to a survey, aggregated by the relevant metric(s).
+A "Normalised Survey Response" represents a [Student's](#student) responses to a survey, aggregated by the relevant metric(s).
 
 ### _Example_
 

@@ -24,7 +24,6 @@ This is how you can retrieve the data for a given query.
     responses={[
         {
             status: 200,
-            color: 'green',
             example: `{
     // The query passed in requests params
     "query": {
@@ -76,9 +75,15 @@ This is how you can retrieve the data for a given query.
 }`,
         },
         {
+            status: 400,
+            description: 'Invalid query',
+            example: `{
+    "error": "'foo' not found for path 'Students.foo'",
+}`,
+        },
+        {
             status: 401,
             description: 'Missing or invalid authentication token',
-            color: 'red',
             example: `{
     "error": "Unauthorized",
 }`,
