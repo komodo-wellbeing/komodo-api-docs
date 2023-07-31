@@ -62,9 +62,11 @@ export default function ApiRequest({ type, url, request, responses }) {
                                 </span>
                                 {response.description && ` ${response.description}`}
                                 {response.example && (
-                                    <CodeBlock language="json" showLineNumbers>
-                                        {response.example}
-                                    </CodeBlock>
+                                    <div className={styles.responseExample}>
+                                        <CodeBlock language="json" showLineNumbers>
+                                            {response.example}
+                                        </CodeBlock>
+                                    </div>
                                 )}
                             </div>
                         ))}

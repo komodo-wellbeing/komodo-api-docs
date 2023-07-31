@@ -26,7 +26,6 @@ Any requests to the REST & Cube APIs must include an `Authorization` header, wit
             status: 200,
             description:
                 'A successful request will return a short-lived token that can be used to retrieve information from both our REST & Cube APIs',
-            color: 'green',
             example: `{
     "token": "eyJhbGciOiJ....."
 }`,
@@ -34,7 +33,6 @@ Any requests to the REST & Cube APIs must include an `Authorization` header, wit
         {
             status: 400,
             description: 'Missing API key',
-            color: 'red',
             example: `{
     "error": "Missing API key",
 }`,
@@ -42,7 +40,6 @@ Any requests to the REST & Cube APIs must include an `Authorization` header, wit
         {
             status: 401,
             description: 'Invalid API key',
-            color: 'red',
             example: `{
     "error": "Invalid API key",
 }`,
