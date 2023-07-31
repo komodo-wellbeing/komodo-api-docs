@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
     title: 'Komodo API',
-    favicon: 'img/logo.svg',
+    favicon: 'img/logo.png',
 
     url: 'https://komodo-wellbeing.github.io',
     baseUrl: '/komodo-api-docs',
@@ -45,7 +45,7 @@ const config = {
             navbar: {
                 title: 'Komodo API',
                 logo: {
-                    src: 'img/logo.svg',
+                    src: 'img/logo.png',
                 },
                 items: [{ to: '/docs', label: 'Docs', position: 'left' }],
             },

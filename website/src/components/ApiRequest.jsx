@@ -3,6 +3,7 @@
 import React from 'react';
 import CodeBlock from '@theme/CodeBlock';
 import styles from './ApiRequest.module.css';
+import Link from '@docusaurus/Link';
 
 const COLORS = {
     green: '#2CDD9C',
@@ -21,7 +22,9 @@ export default function ApiRequest({ type, url, request, responses }) {
             <div className={styles.headingTag}>🚀 {type}</div>
             <div className={styles.contents}>
                 <h1 className={styles.h1}>
-                    <span className={styles.baseUrl}>BASE_URL</span>
+                    <span className={styles.baseUrl}>
+                        <Link href="/docs/environments">BASE_URL</Link>
+                    </span>
                     {url}
                 </h1>
                 {request && (
