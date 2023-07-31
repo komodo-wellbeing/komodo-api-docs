@@ -4,8 +4,6 @@ title: Environments
 slug: /environments/
 ---
 
-# Environments
-
 There are currently two environments available to use the API in.
 
 ## Staging

@@ -4,8 +4,6 @@ title: Introduction
 slug: /cube/
 ---
 
-# Cube API
-
 All requests made to the Cube API must include an `Authorization` header, which is set to the token returned by the authentication process ([see here](./auth.mdx)).
 
 ## Cube Explained

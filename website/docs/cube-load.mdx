@@ -6,8 +6,6 @@ slug: /cube/load/
 
 import ApiRequest from '@site/src/components/ApiRequest';
 
-# Loading Data
-
 This is how you can retrieve the data for a given query.
 
 ## Request
@@ -81,6 +79,9 @@ This is how you can retrieve the data for a given query.
             status: 401,
             description: 'Missing or invalid authentication token',
             color: 'red',
+            example: `{
+    "error": "Unauthorized",
+}`,
         },
     ]}
 />

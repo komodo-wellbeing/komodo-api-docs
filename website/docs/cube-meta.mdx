@@ -6,8 +6,6 @@ slug: /cube/meta/
 
 import ApiRequest from '@site/src/components/ApiRequest';
 
-# Meta Information
-
 Meta-information for the cubes defined in the data model can be retrieved.
 
 ## Request
@@ -23,11 +21,11 @@ Meta-information for the cubes defined in the data model can be retrieved.
             example: `{
     "cubes": [
         "public": true,
-        "name": "GroupMembers",
+        "name": "Groups",
         "title": "Group Members",
         "dimensions": [
             {
-                "name": "GroupMembers.id",
+                "name": "Groups.id",
                 "title": "Group Members Id",
                 "type": "number",
                 "shortTitle": "Id",
@@ -35,7 +33,7 @@ Meta-information for the cubes defined in the data model can be retrieved.
                 "isVisible": true,
             },
             {
-                "name": "GroupMembers.name",
+                "name": "Groups.name",
                 "title": "Group Members Name",
                 "type": "string",
                 "shortTitle": "Name",
@@ -46,7 +44,7 @@ Meta-information for the cubes defined in the data model can be retrieved.
         ],
         "measures": [
             {
-                "name": "GroupMembers.count",
+                "name": "Groups.count",
                 "title": "Group Members Count",
                 "shortTitle": "Count",
                 "type": "number",
@@ -64,6 +62,9 @@ Meta-information for the cubes defined in the data model can be retrieved.
             status: 401,
             description: 'Missing or invalid authentication token',
             color: 'red',
+            example: `{
+    "error": "Unauthorized",
+}`,
         },
     ]}
 />

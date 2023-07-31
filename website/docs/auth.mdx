@@ -7,8 +7,6 @@ slug: /auth/
 import ApiRequest from '@site/src/components/ApiRequest';
 import CodeBlock from '@theme/CodeBlock';
 
-# Authentication
-
 To access the API you need to obtain an integration API key in Komodo. This can be done by
 either:
 
@@ -37,11 +35,17 @@ Any requests to the REST & Cube APIs must include an `Authorization` header, wit
             status: 400,
             description: 'Missing API key',
             color: 'red',
+            example: `{
+    "error": "Missing API key",
+}`,
         },
         {
             status: 401,
             description: 'Invalid API key',
             color: 'red',
+            example: `{
+    "error": "Invalid API key",
+}`,
         },
     ]}
 />
