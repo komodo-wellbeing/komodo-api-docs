@@ -21,11 +21,12 @@ Meta-information for the cubes defined in the data model can be retrieved.
     "cubes": [
         "public": true,
         "name": "Groups",
-        "title": "Group Members",
+        "title": "Groups",
         "dimensions": [
             {
                 "name": "Groups.id",
-                "title": "Group Members Id",
+                "title": "Groups Id",
+                "description": "The group's ID in Komodo Wellbeing",
                 "type": "number",
                 "shortTitle": "Id",
                 "suggestFilterValues": true,
@@ -33,7 +34,8 @@ Meta-information for the cubes defined in the data model can be retrieved.
             },
             {
                 "name": "Groups.name",
-                "title": "Group Members Name",
+                "title": "Groups Name",
+                "description": "The name of the group",
                 "type": "string",
                 "shortTitle": "Name",
                 "suggestFilterValues": true,
@@ -44,7 +46,7 @@ Meta-information for the cubes defined in the data model can be retrieved.
         "measures": [
             {
                 "name": "Groups.count",
-                "title": "Group Members Count",
+                "title": "Groups Count",
                 "shortTitle": "Count",
                 "type": "number",
                 "aggType": "count",
