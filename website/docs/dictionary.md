@@ -13,6 +13,7 @@ An "Organisation" represents a school or any other institution that uses Komodo.
 -   Organisations have 0-N [Groups](#groups)
 -   Organisations have 0-N [Students](#student)
 -   Organisations have 0-N [Years](#years)
+-   Organisations have 0-N [Survey Blueprints](#survey-blueprint)
 
 ## Student
 
@@ -69,6 +70,24 @@ A "Survey Library Question" represents a survey question that is set up in Komod
 
 -   Survey Library Questions belong to 1 [Metric](#metric)
 
+## Survey Blueprint
+
+A "Survey Blueprint" represents a survey that an [Organisation](#organisation) has set up in Komodo.
+
+### _Relationships_
+
+-   Survey Blueprints belong to 1 [Organisation](#organisation)
+-   Survey Blueprints have 0-N [Surveys](#survey)
+
+## Survey
+
+A "Survey" represents a [Student's](#student) requirement to complete a [Survey Blueprint](#survey-blueprint) between during a specific date range.
+
+### _Relationships_
+
+-   Surveys belong to 1 [Student](#student)
+-   Surveys belong to 1 [Survey Blueprint](#survey-blueprint)
+
 ## Normalised Survey Response
 
 A "Normalised Survey Response" represents a [Student's](#student) responses to a survey, aggregated by the relevant metric(s).
@@ -82,3 +101,4 @@ record would be created for Happiness. That record would contain the average sco
 
 -   Normalised Survey Responses belong to 1 [Metric](#metric)
 -   Normalised Survey Responses belong to 1 [Student](#student)
+-   Normalised Survey Responses belong to 1 [Survey](#survey)
