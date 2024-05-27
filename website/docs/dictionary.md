@@ -10,9 +10,9 @@ An "Organisation" represents a school or any other institution that uses Komodo.
 
 ### _Relationships_
 
--   Organisations have 0-N [Groups](#groups)
+-   Organisations have 0-N [Groups](#group)
 -   Organisations have 0-N [Students](#student)
--   Organisations have 0-N [Years](#years)
+-   Organisations have 0-N [Years](#year)
 -   Organisations have 0-N [Survey Blueprints](#survey-blueprint)
 
 ## Student
