@@ -70,6 +70,15 @@ A "Survey Library Question" represents a survey question that is set up in Komod
 
 -   Survey Library Questions belong to 1 [Metric](#metric)
 
+## Survey Library Question Answer
+
+A "Survey Library Question Answer" represents a survey question's possible answers, e.g. "Agree", "Strongly Agree".
+
+### _Relationships_
+
+-   Survey Library Question Answers belong to 1 [Survey Library Question](#survey-library-question)
+-   Survey Library Question Answers have 0-N [Survey Responses](#survey-response)
+
 ## Survey Blueprint
 
 A "Survey Blueprint" represents a survey that an [Organisation](#organisation) has set up in Komodo.
@@ -79,6 +88,16 @@ A "Survey Blueprint" represents a survey that an [Organisation](#organisation) h
 -   Survey Blueprints belong to 1 [Organisation](#organisation)
 -   Survey Blueprints have 0-N [Surveys](#survey)
 
+## Survey Blueprint Question
+
+A "Survey Blueprint Questions" represents a [Survey Library Question](#survey-library-question) that has been added to a [Survey Blueprint](#survey-blueprint).
+
+### _Relationships_
+
+-   Survey Blueprint Questions belong to 1 [Survey Blueprint](#survey-blueprint)
+-   Survey Blueprint Questions belong to 1 [Survey Library Question](#survey-library-question)
+-   Survey Blueprint Questions have 0-N [Survey Responses](#survey-response)
+
 ## Survey
 
 A "Survey" represents a [Student's](#student) requirement to complete a [Survey Blueprint](#survey-blueprint) between during a specific date range.
@@ -87,6 +106,17 @@ A "Survey" represents a [Student's](#student) requirement to complete a [Survey 
 
 -   Surveys belong to 1 [Student](#student)
 -   Surveys belong to 1 [Survey Blueprint](#survey-blueprint)
+
+## Survey Response
+
+A "Survey Response" represents a [Student's](#student) response to a survey question for a specific [Question](#survey-blueprint-question) in a specific [Survey](#survey).
+
+### _Relationships_
+
+-   Survey Responses belong to 1 [Student](#student)
+-   Survey Responses belong to 1 [Survey](#survey)
+-   Survey Responses belong to 1 [Survey Blueprint Question](#survey-blueprint-question)
+-   Survey Responses belong to 1 [Survey Library Question Answer](#survey-library-question-answer)
 
 ## Normalised Survey Response
 
