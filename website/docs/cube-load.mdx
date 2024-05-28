@@ -19,6 +19,13 @@ This is how you can retrieve the data for a given query.
     "dimensions": ["Students.id", "Students.firstname", "Students.lastname"],
     "measures": [],
     "segments": [],
+    "timeDimensions": [
+        {
+            "dimension": "Students.createdAt",
+            "dateRange": ["2024-01-01", "2024-12-01"],
+            "granularity": null,
+        }
+    ],
 }`,
     }}
     responses={[
@@ -30,6 +37,13 @@ This is how you can retrieve the data for a given query.
         "dimensions": ["Students.id", "Students.firstname", "Students.lastname"],
         "measures": [],
         "segments": [],
+        "timeDimensions": [
+            {
+                "dimension": "Students.createdAt",
+                "dateRange": ["2024-01-01", "2024-12-01"],
+                "granularity": null,
+            }
+        ],
     },
     // Formatted dataset of query results
     "data": [

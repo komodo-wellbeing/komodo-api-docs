@@ -26,7 +26,7 @@ Filters are ways you can filter returned query results.
 
 ### Time Dimensions
 
-Time Dimensions can be included in a query to limit results to a specific time based on any time fields.
+Time Dimensions can be included in a query to limit results to a specific time based on any date or time fields.
 
 ## External Links
 
