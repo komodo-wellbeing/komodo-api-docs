@@ -132,3 +132,29 @@ record would be created for Happiness. That record would contain the average sco
 -   Normalised Survey Responses belong to 1 [Metric](#metric)
 -   Normalised Survey Responses belong to 1 [Student](#student)
 -   Normalised Survey Responses belong to 1 [Survey](#survey)
+
+## Check-in
+
+A "Check-in" represents a student either requesting a check-in with a staff member, or a check-in automatically generated based on their recent survey responses.
+
+### _Examples_
+
+#### Generated check-in
+
+If a [Student](#student) responded with a low score for the Happiness [Metric](#metric) in their most recent 3 surveys, a check-in would be generated to let staff know to talk to the student.
+
+#### Requested check-in
+
+A [Student](#student) is able to request a check-in with one or more staff members, letting them know they need somebody to talk to.
+
+### _Relationships_
+
+-   Check-ins belong to 1 [Student](#student)
+
+## Check-in Follow Up
+
+A "Check-in Follow up" represents a staff member recording that they have talked to a student regarding a given [Check-in](#check-in).
+
+### _Relationships_
+
+-   Check-in follow ups belong to 1 [Check-in](#check-in)
