@@ -19,7 +19,7 @@ Any requests to the REST & Cube APIs must include an `Authorization` header, wit
 <ApiRequest
     type="POST"
     url="/rest/v1/auth/login"
-    request={{ headers: [{ name: '__x-api-key__', description: 'Organisation-based API key issued by Komodo' }] }}
+    request={{ headers: [{ name: 'x-api-key', description: 'Organisation-based API key issued by Komodo' }] }}
     responses={[
         {
             status: 200,
