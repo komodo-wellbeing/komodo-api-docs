@@ -11,6 +11,20 @@ defaults:
         working-directory: website
 
 jobs:
+    lint:
+        name: Lint
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+                  cache: npm
+                  cache-dependency-path: website/package-lock.json
+            - name: Install dependencies
+              run: npm ci
+            - name: Lint
+              run: npm run typecheck
     test-deploy:
         name: Test deployment
         runs-on: ubuntu-latest
