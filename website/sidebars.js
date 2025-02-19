@@ -5,7 +5,7 @@ const sidebars = {
     docs: {
         Introduction: ['welcome', 'environments', 'auth', 'dictionary'],
         'REST API': ['rest'],
-        'Cube API': ['cube', 'cube-meta', 'cube-load', 'cube-troubleshooting'],
+        'Cube API (Deprecated)': ['cube', 'cube-meta', 'cube-load', 'cube-troubleshooting'],
     },
 };
 

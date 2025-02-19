@@ -4,6 +4,10 @@ title: Troubleshooting
 slug: /cube/troubleshooting/
 ---
 
+:::danger[Deprecated]
+The Cube API is deprecated, and the [REST API](./rest.md) should be used instead.
+:::
+
 ## Not enough rows returned
 
 If you've received back less data than expected, you may be running into a limit of records being returned. Some example limits that may be applied are 10,000 & 50,000.
