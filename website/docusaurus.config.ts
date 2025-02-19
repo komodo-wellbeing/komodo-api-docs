@@ -45,12 +45,12 @@ const config: Config = {
         [
             'docusaurus-plugin-openapi-docs',
             {
-                id: 'rest-api',
+                id: 'rest-v1',
                 docsPluginId: 'classic', // preset-classic
                 config: {
-                    'rest-api': {
-                        specPath: 'src/rest-api.yaml',
-                        outputDir: 'docs/rest-api',
+                    'rest-v1': {
+                        specPath: 'src/rest-v1.yaml',
+                        outputDir: 'docs/rest/v1',
                         sidebarOptions: {
                             groupPathsBy: 'tag',
                         },

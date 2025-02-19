@@ -5,7 +5,7 @@ slug: /cube/troubleshooting/
 ---
 
 :::danger[Deprecated]
-The Cube API is deprecated, and the [REST API](./rest-api/komodo-rest-api.info.mdx) should be used instead.
+The Cube API is deprecated, and the [REST API](./rest/v1/komodo-rest-api.info.mdx) should be used instead.
 :::
 
 ## Not enough rows returned
