@@ -2,7 +2,8 @@
     "private": true,
     "scripts": {
         "start:dev": "docusaurus start --no-open --port 3002",
-        "gen:api": "docusaurus clean-api-docs rest-api && docusaurus gen-api-docs rest-api",
+        "openapi:pull": "cp ../../komodo-api/src/api/rest/v1/openapi.yaml src/rest-api.yaml",
+        "openapi:gen": "docusaurus clean-api-docs rest-api && docusaurus gen-api-docs rest-api",
         "build": "npm run gen:api && docusaurus build",
         "clear": "docusaurus clear",
         "typecheck": "tsc"
