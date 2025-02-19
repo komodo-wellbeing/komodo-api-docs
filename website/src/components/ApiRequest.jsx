@@ -22,7 +22,7 @@ export default function ApiRequest({ type, url, request, responses }) {
             <div className={styles.contents}>
                 <h1 className={styles.h1}>
                     <span className={styles.baseUrl}>
-                        <Link href="/docs/environments">BASE_URL</Link>
+                        <Link href="/docs/getting-started#environments">BASE_URL</Link>
                     </span>
                     {url}
                 </h1>

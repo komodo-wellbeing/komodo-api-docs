@@ -3,9 +3,9 @@ import restApiSidebar from './docs/rest-api/sidebar';
 
 const sidebars: SidebarsConfig = {
     docs: {
-        Introduction: ['welcome', 'environments', 'auth', 'dictionary'],
+        Introduction: ['introduction', 'getting-started', 'dictionary'],
         'REST API': [restApiSidebar],
-        'Cube API (Deprecated)': ['cube', 'cube-meta', 'cube-load', 'cube-troubleshooting'],
+        'Cube API (Deprecated)': ['cube', 'cube-auth', 'cube-meta', 'cube-load', 'cube-troubleshooting'],
     },
 };
 

@@ -5,10 +5,10 @@ slug: /cube/
 ---
 
 :::danger[Deprecated]
-The Cube API is deprecated, and the [REST API](./rest.md) should be used instead.
+The Cube API is deprecated, and the [REST API](./rest-api/komodo-rest-api.info.mdx) should be used instead.
 :::
 
-All requests made to the Cube API must include an `Authorization` header, which is set to the token returned by the authentication process ([see here](./auth.mdx)).
+All requests made to the Cube API must include an `Authorization` header, which is set to the token returned by the authentication process ([see here](./cube-auth.mdx)).
 
 ## Cube Explained
 
