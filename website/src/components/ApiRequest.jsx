@@ -1,9 +1,8 @@
 // @ts-check
 
-import React from 'react';
+import Link from '@docusaurus/Link';
 import CodeBlock from '@theme/CodeBlock';
 import styles from './ApiRequest.module.css';
-import Link from '@docusaurus/Link';
 
 const COLORS = {
     green: '#2CDD9C',
@@ -43,7 +42,7 @@ export default function ApiRequest({ type, url, request, responses }) {
                             </>
                         )}
                         {request.example && (
-                            <CodeBlock language="json" showLineNumbers>
+                            <CodeBlock language="js" showLineNumbers>
                                 {request.example}
                             </CodeBlock>
                         )}
@@ -63,7 +62,7 @@ export default function ApiRequest({ type, url, request, responses }) {
                                 {response.description && ` ${response.description}`}
                                 {response.example && (
                                     <div className={styles.responseExample}>
-                                        <CodeBlock language="json" showLineNumbers>
+                                        <CodeBlock language="js" showLineNumbers>
                                             {response.example}
                                         </CodeBlock>
                                     </div>

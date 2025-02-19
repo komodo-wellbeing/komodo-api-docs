@@ -1,8 +1,9 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+// Used for code block syntax highlighting
 const { themes } = require('prism-react-renderer');
-const lightCodeTheme = themes.github;
+const lightCodeTheme = themes.palenight;
 const darkCodeTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
