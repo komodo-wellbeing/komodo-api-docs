@@ -4,7 +4,11 @@ title: Introduction
 slug: /cube/
 ---
 
-All requests made to the Cube API must include an `Authorization` header, which is set to the token returned by the authentication process ([see here](./auth.mdx)).
+:::danger[Deprecated]
+The Cube API is deprecated, and the [REST API](./rest/v1/komodo-rest-api.info.mdx) should be used instead.
+:::
+
+All requests made to the Cube API must include an `Authorization` header, which is set to the token returned by the authentication process ([see here](./cube-auth.mdx)).
 
 ## Cube Explained
 

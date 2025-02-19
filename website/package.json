@@ -1,15 +1,11 @@
 {
     "private": true,
     "scripts": {
-        "docusaurus": "docusaurus",
-        "start": "docusaurus start",
-        "build": "docusaurus build",
-        "swizzle": "docusaurus swizzle",
-        "deploy": "docusaurus deploy",
+        "start:dev": "docusaurus start --no-open --port 3002",
+        "openapi:pull": "cp ../../komodo-api/src/api/rest/v1/openapi.yaml src/rest-v1.yaml",
+        "openapi:gen": "docusaurus clean-api-docs rest-v1 && docusaurus gen-api-docs rest-v1",
+        "build": "npm run openapi:gen && docusaurus build",
         "clear": "docusaurus clear",
-        "serve": "docusaurus serve",
-        "write-translations": "docusaurus write-translations",
-        "write-heading-ids": "docusaurus write-heading-ids",
         "typecheck": "tsc"
     },
     "dependencies": {
@@ -17,6 +13,8 @@
         "@docusaurus/preset-classic": "3.7.0",
         "@mdx-js/react": "^3.0.0",
         "clsx": "^1.2.1",
+        "docusaurus-plugin-openapi-docs": "^4.3.4",
+        "docusaurus-theme-openapi-docs": "^4.3.4",
         "prism-react-renderer": "^2.1.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0"

@@ -150,6 +150,21 @@ A [Student](#student) is able to request a check-in with one or more staff membe
 ### _Relationships_
 
 -   Check-ins belong to 1 [Student](#student)
+-   Check-ins have 0-N [Check-in Reasons](#check-in-reason)
+
+## Check-in Reason
+
+A "Check-in Reason" is a reason that a student has had a "Generated check-in" automatically created for them.
+
+### _Examples_
+
+A [Student](#student) responds with a low score to a given [Metric](#metric) to several [Surveys](#survey). Komodo Wellbeing will
+automatically generate a check-in for them, with a reason attached to it linked to that [Metric](#metric).
+
+### _Relationships_
+
+-   Check-in Reasons belong to 1 [Check-in](#check-in)
+-   Check-in Reasons belong to 1 [Metric](#metric)
 
 ## Check-in Follow Up
 

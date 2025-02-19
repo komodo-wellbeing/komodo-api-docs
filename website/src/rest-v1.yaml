@@ -1,0 +1,1596 @@
+openapi: 3.1.0
+
+info:
+  title: Komodo REST API
+  version: 1.0.0
+
+servers:
+  - url: https://{region}.api.komodowellbeing.com/rest/v1
+    description: Production environment
+    variables:
+      region:
+        default: us.east1
+        description: The region of your Komodo Wellbeing instance
+  - url: https://{region}.stage.api.komodowellbeing.com/rest/v1
+    description: Staging environment
+    variables:
+      region:
+        default: us.east1
+        description: The region of your Komodo Wellbeing instance
+  - url: http://localhost:3002/rest/v1
+    description: Development environment
+
+tags:
+  - name: Auth
+  - name: Check-ins
+  - name: Groups
+  - name: Metrics
+  - name: Organisations
+  - name: Survey Responses
+  - name: Survey Blueprints
+  - name: Survey Library
+  - name: User Surveys
+  - name: Users
+
+paths:
+  /auth/login:
+    post:
+      summary: Authenticate
+      description: Authenticate using an API key. If successful, a Bearer token is returned.
+      tags:
+        - Auth
+      security:
+        - ApiKey: []
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginToken'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /check_ins:
+    get:
+      summary: Get check-ins
+      description: Get all check-ins in the current organisation
+      tags:
+        - Check-ins
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/CheckIns'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /check_ins/{check_in_id}:
+    get:
+      summary: Get check-in
+      description: Get a check-in in the current organisation
+      tags:
+        - Check-ins
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: check_in_id
+          in: path
+          required: true
+          description: The ID of the check-in
+          schema:
+            type: number
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckIn'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /groups:
+    get:
+      summary: Get groups
+      description: Get all groups in the current organisation
+      tags:
+        - Groups
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Groups'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /groups/{group_id}:
+    get:
+      summary: Get group
+      description: Get a group in the current organisation
+      tags:
+        - Groups
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: group_id
+          in: path
+          required: true
+          description: The ID of the group
+          schema:
+            type: number
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /groups/{group_id}/users:
+    get:
+      summary: Get group's users
+      description: Get all users in a group in the current organisation
+      tags:
+        - Groups
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: group_id
+          in: path
+          required: true
+          description: The ID of the group
+          schema:
+            type: number
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Users'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /years:
+    get:
+      summary: Get all years
+      description: Get all years in the current organisation
+      tags:
+        - Groups
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Groups'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /years/{group_id}:
+    get:
+      summary: Get year
+      description: Get a year in the current organisation
+      tags:
+        - Groups
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: group_id
+          in: path
+          required: true
+          description: The ID of the year
+          schema:
+            type: number
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /years/{group_id}/users:
+    get:
+      summary: Get year's users
+      description: Get all users in a year in the current organisation
+      tags:
+        - Groups
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: group_id
+          in: path
+          required: true
+          description: The ID of the year
+          schema:
+            type: number
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Users'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /metrics:
+    get:
+      summary: Get metrics
+      description: Get all metrics in Komodo Wellbeing
+      tags:
+        - Metrics
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Metrics'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /metrics/{metric_id}:
+    get:
+      summary: Get metric
+      description: Get a metric in Komodo Wellbeing
+      tags:
+        - Metrics
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: metric_id
+          in: path
+          required: true
+          description: The ID of the metric
+          schema:
+            type: number
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Metric'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /organisations/{org_id}:
+    get:
+      summary: Get organisation
+      description: Get an organisation in Komodo Wellbeing. You only have access to the organisation your API key is associated with.
+      tags:
+        - Organisations
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: org_id
+          in: path
+          required: true
+          description: The ID of the organisation
+          schema:
+            type: number
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organisation'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /survey_blueprints:
+    get:
+      summary: Get survey blueprints
+      description: Get all survey blueprints in the current organisation
+      tags:
+        - Survey Blueprints
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SurveyBlueprints'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /survey_blueprints/{blueprint_id}:
+    get:
+      summary: Get survey blueprint
+      description: Get a survey blueprint in the current organisation
+      tags:
+        - Survey Blueprints
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: blueprint_id
+          in: path
+          required: true
+          description: The ID of the survey blueprint
+          schema:
+            type: number
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveyBlueprint'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /survey_library/questions/long_text:
+    get:
+      summary: Get long text library questions
+      description: Get all LONG_TEXT-type survey library questions in Komodo Wellbeing
+      tags:
+        - Survey Library
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SurveyLibraryLongTextQuestions'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /survey_library/questions/long_text/{question_id}:
+    get:
+      summary: Get long text library question
+      description: Get a LONG_TEXT-type survey library question in Komodo Wellbeing
+      tags:
+        - Survey Library
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: question_id
+          in: path
+          required: true
+          description: The ID of the survey library question
+          schema:
+            type: number
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveyLibraryLongTextQuestion'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /survey_library/questions/scale:
+    get:
+      summary: Get scale library questions
+      description: Get all SCALE-type survey library questions in Komodo Wellbeing
+      tags:
+        - Survey Library
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SurveyLibraryScaleQuestions'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /survey_library/questions/scale/{question_id}:
+    get:
+      summary: Get scale library question
+      description: Get a SCALE-type survey library question in Komodo Wellbeing
+      tags:
+        - Survey Library
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: question_id
+          in: path
+          required: true
+          description: The ID of the survey library question
+          schema:
+            type: number
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveyLibraryScaleQuestion'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /survey_responses:
+    get:
+      summary: Get user survey responses
+      description: Get all user survey responses in the current organisation
+      tags:
+        - Survey Responses
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/UserSurveyResponses'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /survey_responses/{response_id}:
+    get:
+      summary: Get user survey response
+      description: Get a user survey response in the current organisation
+      tags:
+        - Survey Responses
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: response_id
+          in: path
+          required: true
+          description: The ID of the user survey response
+          schema:
+            type: number
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSurveyResponse'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /normalised_responses:
+    get:
+      summary: Get normalised user survey responses
+      description: Get all normalised user survey responses in the current organisation
+      tags:
+        - Survey Responses
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/UserSurveyNormalisedResponses'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /normalised_responses/{response_id}:
+    get:
+      summary: Get normalised user survey response
+      description: Get a normalised user survey response in the current organisation
+      tags:
+        - Survey Responses
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: response_id
+          in: path
+          required: true
+          description: The ID of the user survey response
+          schema:
+            type: number
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSurveyNormalisedResponse'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /surveys:
+    get:
+      summary: Get user surveys
+      description: Get all user surveys in the current organisation
+      tags:
+        - User Surveys
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/UserSurveys'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /surveys/{survey_id}:
+    get:
+      summary: Get user survey
+      description: Get a user survey in the current organisation
+      tags:
+        - User Surveys
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: survey_id
+          in: path
+          required: true
+          description: The ID of the user survey
+          schema:
+            type: number
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSurvey'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /users:
+    get:
+      summary: Get users
+      description: Get all users in the current organisation
+      tags:
+        - Users
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Users'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /users/{user_id}:
+    get:
+      summary: Get user
+      description: Get a user in the current organisation
+      tags:
+        - Users
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: The ID of the user
+          schema:
+            type: number
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /users/{user_id}/check_ins:
+    get:
+      summary: Get user's check-ins
+      description: Get all check-ins a user has made in the current organisation
+      tags:
+        - Users
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: The ID of the user
+          schema:
+            type: number
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/CheckIns'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /users/{user_id}/groups:
+    get:
+      summary: Get user's groups
+      description: Get all groups a user is a member of in the current organisation
+      tags:
+        - Users
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: The ID of the user
+          schema:
+            type: number
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Groups'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /users/{user_id}/years:
+    get:
+      summary: Get user's years
+      description: Get all years a user is a member of in the current organisation
+      tags:
+        - Users
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: The ID of the user
+          schema:
+            type: number
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Groups'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /users/{user_id}/surveys:
+    get:
+      summary: Get user's surveys
+      description: Get all surveys a user has in the current organisation
+      tags:
+        - Users
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: The ID of the user
+          schema:
+            type: number
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/UserSurveys'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /users/{user_id}/survey_responses:
+    get:
+      summary: Get user's survey responses
+      description: Get all survey responses a user has made in the current organisation
+      tags:
+        - Users
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: The ID of the user
+          schema:
+            type: number
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/UserSurveyResponses'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /users/{user_id}/normalised_responses:
+    get:
+      summary: Get user's normalised survey responses
+      description: Get all normalised survey responses a user has made in the current organisation
+      tags:
+        - Users
+      security:
+        - ApiKey: []
+          BearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: The ID of the user
+          schema:
+            type: number
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/UserSurveyNormalisedResponses'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+components:
+  parameters:
+    PaginationLimit:
+      name: limit
+      in: query
+      description: The number of records.
+      schema:
+        type: number
+        default: 100
+        minimum: 1
+        maximum: 500
+    PaginationCursor:
+      name: cursor
+      in: query
+      description: The ID of the last record viewed. If included, returned results will be starting from the next record ID greater than this value.
+      schema:
+        type: number
+        default: null
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Invalid authentication
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Something went wrong processing the request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request data
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        status:
+          type: number
+        message:
+          type: string
+
+    LoginToken:
+      type: object
+      properties:
+        token:
+          type: string
+          description: A Bearer token
+
+    CheckIns:
+      type: array
+      items:
+        $ref: '#/components/schemas/CheckIn'
+    CheckIn:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The check-in's ID in Komodo Wellbeing
+        user_id:
+          type: number
+          description: The user ID that this check-in is for in Komodo Wellbeing
+        type:
+          type: string
+          enum:
+            - GENERATED
+            - REQUESTED
+            - MANUAL
+          description: >
+            The check-in's type
+
+              * GENERATED This check-in was automatically generated by Komodo Wellbeing due to a user's survey responses
+              * REQUESTED This check-in was manually requested by a user
+              * MANUAL This check-in is a pastoral note left by a staff member
+        comment:
+          type: string
+          nullable: true
+          description: A comment left by the user in a REQUESTED check-in
+        created_at:
+          type: string
+          format: date-time
+          description: When the check-in was created
+        # type: 'null' is invalid in 3.x.x spec, but fails with valid nullable: true w/o a type declared
+        # See https://github.com/ajv-validator/ajv/issues/2283#issuecomment-2233931663
+        follow_up:
+          oneOf:
+            - $ref: '#/components/schemas/CheckInFollowUp'
+            - type: 'null'
+          description: The follow up made to this check-in
+        reasons:
+          oneOf:
+            - $ref: '#/components/schemas/CheckInReasons'
+            - type: 'null'
+          description: The reasons involved in a GENERATED check-in being created
+    CheckInReasons:
+      type: array
+      items:
+        $ref: '#/components/schemas/CheckInReason'
+    CheckInReason:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The check-in reason's ID in Komodo Wellbeing
+        metric_id:
+          type: number
+          description: The metric's ID in Komodo Wellbeing
+        check_in_id:
+          type: number
+          description: The initial check-in's ID in Komodo Wellbeing
+        type:
+          type: string
+          enum:
+            - CONSISTENT_LOW
+            - LOW_Z
+          description: >
+            What caused this check-in to be generated e.g. low scoring in a survey
+
+              * CONSISTENT_LOW The user scored consistently low for this metric in the last few survey responses
+              * LOW_Z The user scored significantly lower than usual for this metric in the last survey response
+    CheckInFollowUps:
+      type: array
+      items:
+        $ref: '#/components/schemas/CheckInFollowUp'
+    CheckInFollowUp:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The follow up's ID in Komodo Wellbeing
+        check_in_id:
+          type: number
+          description: The initial check-in's ID in Komodo Wellbeing
+        created_at:
+          type: string
+          format: date-time
+          description: When the follow up was created
+
+    Groups:
+      type: array
+      items:
+        $ref: '#/components/schemas/Group'
+    Group:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The group's ID in Komodo Wellbeing
+        name:
+          type: string
+          description: The name of the group
+        type:
+          type: string
+          enum:
+            - REGISTRATION
+            - YEAR
+            - HOUSE
+            - BOARDING
+            - COURSE
+            - MISC
+            - USER
+            - CAMPUS
+          description: The group's type
+        created_at:
+          type: string
+          format: date-time
+          description: When the group was created
+
+    Metrics:
+      type: array
+      items:
+        $ref: '#/components/schemas/Metric'
+    Metric:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The metric's ID in Komodo Wellbeing
+        name:
+          type: string
+          description: The name of the metric
+        themes:
+          $ref: '#/components/schemas/MetricThemes'
+          description: The themes that this metric is a part of
+
+    MetricThemes:
+      type: array
+      items:
+        $ref: '#/components/schemas/MetricTheme'
+    MetricTheme:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The theme's ID in Komodo Wellbeing
+        name:
+          type: string
+          description: The name of the theme
+
+    Organisation:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The organisation's ID in Komodo Wellbeing
+        name:
+          type: string
+          description: The name of the organisation
+
+    SurveyBlueprints:
+      type: array
+      items:
+        $ref: '#/components/schemas/SurveyBlueprint'
+    SurveyBlueprint:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The survey blueprint's ID in Komodo Wellbeing
+        name:
+          type: string
+          description: The name of the survey blueprint
+        questions:
+          $ref: '#/components/schemas/SurveyBlueprintQuestions'
+          description: The questions in this survey blueprint
+
+    SurveyBlueprintQuestions:
+      type: array
+      items:
+        $ref: '#/components/schemas/SurveyBlueprintQuestion'
+    SurveyBlueprintQuestion:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The survey blueprint question's ID in Komodo Wellbeing
+        library_question_id:
+          type: number
+          description: The library question ID that this question is based on in Komodo Wellbeing
+        required:
+          type: boolean
+          description: Whether this question is required when completing the survey in Komodo Wellbeing
+        type:
+          type: string
+          enum:
+            - SCALE
+            - LONG_TEXT
+          description: The question type
+        scale_type:
+          type: string
+          nullable: true
+          enum:
+            - emoji_3
+            - emoji_5
+            - rating
+            - continuous
+          description: >
+            The scale type used when answering this question. Will only be set if type is "SCALE"
+
+              * emoji_3 A set of 3 emojis
+              * emoji_5 A set of 5 emojis
+              * rating A stepped/discrete rating e.g. a stepped slider
+              * continuous A continuous rating e.g. a slider
+
+    SurveyLibraryLongTextQuestions:
+      type: array
+      items:
+        $ref: '#/components/schemas/SurveyLibraryLongTextQuestion'
+    SurveyLibraryLongTextQuestion:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The question's ID in Komodo Wellbeing
+        question:
+          type: string
+          description: The question text
+    SurveyLibraryScaleQuestions:
+      type: array
+      items:
+        $ref: '#/components/schemas/SurveyLibraryScaleQuestion'
+    SurveyLibraryScaleQuestion:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The question's ID in Komodo Wellbeing
+        question:
+          type: string
+          description: The question text
+        description:
+          type: string
+          description: Further information about this question
+        metric_id:
+          type: number
+          nullable: true
+          description: The ID of the metric this question belongs to in Komodo Wellbeing
+        age_category:
+          type: string
+          enum:
+            - ALL_AGES
+            - PRIMARY
+            - SECONDARY
+            - null
+          nullable: true
+          description: The age category of this question
+        min_score:
+          type: number
+          description: The minimum score range that can be answered for this question
+        max_score:
+          type: number
+          description: The maximum score range that can be answered for this question
+        answers:
+          $ref: '#/components/schemas/SurveyLibraryScaleAnswers'
+    SurveyLibraryScaleAnswers:
+      type: array
+      items:
+        $ref: '#/components/schemas/SurveyLibraryScaleAnswer'
+    SurveyLibraryScaleAnswer:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The question answer's ID in Komodo Wellbeing
+        description:
+          type: string
+          description: The question answer text
+        score:
+          type: number
+          description: The numerical value of this question answer
+
+    Users:
+      type: array
+      items:
+        $ref: '#/components/schemas/User'
+    User:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The user's ID in Komodo Wellbeing
+        firstname:
+          type: string
+          description: The user's first name
+        lastname:
+          type: string
+          description: The user's last name
+        email:
+          type: string
+          format: email
+          description: The user's email address
+        gender:
+          type: string
+          description: The user's gender
+          enum:
+            - MALE
+            - FEMALE
+            - OTHER
+        mis_id:
+          type: string
+          nullable: true
+          description: The ID of this user in the school's third-party MIS (Management Information System)
+        upn:
+          type: string
+          nullable: true
+          description: The user's UPN (unique pupil number)
+        created_at:
+          type: string
+          format: date-time
+          description: When the user was created
+        role:
+          type: string
+          enum:
+            - USER
+            - STAFF
+            - ADMIN
+          description: The role this user has
+
+    UserSurveys:
+      type: array
+      items:
+        $ref: '#/components/schemas/UserSurvey'
+    UserSurvey:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The survey's ID in Komodo Wellbeing
+        survey_blueprint_id:
+          type: number
+          description: The survey blueprint ID that this survey is using in Komodo Wellbeing
+        user_id:
+          type: number
+          description: The user ID that this survey is for in Komodo Wellbeing
+        start_date:
+          type: string
+          format: date-time
+          description: When the survey is due from
+        due_date:
+          type: string
+          format: date-time
+          description: When the survey is due until
+        completed_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: When the student completed this survey
+
+    UserSurveyResponses:
+      type: array
+      items:
+        $ref: '#/components/schemas/UserSurveyResponse'
+    UserSurveyResponse:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The survey response's ID in Komodo Wellbeing
+        user_id:
+          type: number
+          description: The user ID that this response has been made by in Komodo Wellbeing
+        survey_id:
+          type: number
+          description: The user survey ID that this response has been made for in Komodo Wellbeing
+        blueprint_question_id:
+          type: number
+          description: The survey blueprint question ID that this response has been made for in Komodo Wellbeing
+        created_at:
+          type: string
+          format: date-time
+          description: When the response was made
+        score:
+          type: number
+          description: The score for this response, which matches a SurveyLibraryScaleAnswer.score value
+    UserSurveyNormalisedResponses:
+      type: array
+      items:
+        $ref: '#/components/schemas/UserSurveyNormalisedResponse'
+    UserSurveyNormalisedResponse:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The normalised survey response's ID in Komodo Wellbeing
+        user_id:
+          type: number
+          description: The user ID that this normalised survey response is for in Komodo Wellbeing
+        survey_id:
+          type: number
+          description: The user survey ID that this normalised response has been generated for in Komodo Wellbeing
+        metric_id:
+          type: number
+          description: The metric ID that this normalised response has been generated for in Komodo Wellbeing
+        score:
+          type: number
+          description: The normalised score 1-10
+        created_at:
+          type: string
+          format: date-time
+          description: When the response was generated
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      name: x-api-key
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer

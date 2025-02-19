@@ -1,15 +1,15 @@
 ---
-id: welcome
-title: Welcome
+id: introduction
+title: Introduction
 slug: /
 ---
 
 Welcome to the Komodo API documentation! Here you can find documentation on how to use our API.
 
-[API Environments](./environments.md)
+[REST API](./rest/v1/komodo-rest-api.info.mdx)
 
-[Authentication](./auth.mdx)
+## Deprecated
 
-[REST API](./rest.md)
+The below documentation is for anything that is deprecated, and will be removed at some point.
 
-[Cube API](./cube.md)
+[Cube API](./cube.md) - _use [REST API](./rest/v1/komodo-rest-api.info.mdx) instead_
