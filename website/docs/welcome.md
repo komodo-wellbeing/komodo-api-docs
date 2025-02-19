@@ -16,4 +16,4 @@ Welcome to the Komodo API documentation! Here you can find documentation on how 
 
 The below documentation is for anything that is deprecated, and will be removed at some point.
 
-[Cube API](./cube.md) _*(use [REST API]('./rest.md) instead)*_
+[Cube API](./cube.md) - _use [REST API](./rest.md) instead_
