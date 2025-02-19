@@ -1,9 +1,10 @@
 {
     "private": true,
     "scripts": {
-        "start": "docusaurus start --no-open",
+        "start:dev": "docusaurus start --no-open --port 3002",
         "build": "docusaurus build",
         "clear": "docusaurus clear",
+        "build:api": "docusaurus clean-api-docs rest-api && docusaurus gen-api-docs rest-api",
         "typecheck": "tsc"
     },
     "dependencies": {
@@ -11,6 +12,8 @@
         "@docusaurus/preset-classic": "3.7.0",
         "@mdx-js/react": "^3.0.0",
         "clsx": "^1.2.1",
+        "docusaurus-plugin-openapi-docs": "^4.3.4",
+        "docusaurus-theme-openapi-docs": "^4.3.4",
         "prism-react-renderer": "^2.1.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0"
