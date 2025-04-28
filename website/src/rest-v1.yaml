@@ -62,6 +62,7 @@ paths:
       tags:
         - Check-ins
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -94,6 +95,7 @@ paths:
       tags:
         - Check-ins
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -126,6 +128,7 @@ paths:
       tags:
         - Groups
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -158,6 +161,7 @@ paths:
       tags:
         - Groups
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -189,6 +193,7 @@ paths:
       tags:
         - Groups
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -230,6 +235,7 @@ paths:
       tags:
         - Groups
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -262,6 +268,7 @@ paths:
       tags:
         - Groups
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -293,6 +300,7 @@ paths:
       tags:
         - Groups
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -334,6 +342,7 @@ paths:
       tags:
         - Metrics
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -366,6 +375,7 @@ paths:
       tags:
         - Metrics
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -398,6 +408,7 @@ paths:
       tags:
         - Organisations
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -430,6 +441,7 @@ paths:
       tags:
         - Survey Blueprints
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -462,6 +474,7 @@ paths:
       tags:
         - Survey Blueprints
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -494,6 +507,7 @@ paths:
       tags:
         - Survey Library
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -526,6 +540,7 @@ paths:
       tags:
         - Survey Library
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -557,6 +572,7 @@ paths:
       tags:
         - Survey Library
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -589,6 +605,7 @@ paths:
       tags:
         - Survey Library
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -621,6 +638,7 @@ paths:
       tags:
         - Survey Responses
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -655,6 +673,7 @@ paths:
       tags:
         - Survey Responses
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -687,6 +706,7 @@ paths:
       tags:
         - Survey Responses
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -721,6 +741,7 @@ paths:
       tags:
         - Survey Responses
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -753,6 +774,7 @@ paths:
       tags:
         - User Surveys
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -787,6 +809,7 @@ paths:
       tags:
         - User Surveys
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -819,6 +842,7 @@ paths:
       tags:
         - Users
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -851,6 +875,7 @@ paths:
       tags:
         - Users
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -882,6 +907,7 @@ paths:
       tags:
         - Users
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -922,6 +948,7 @@ paths:
       tags:
         - Users
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -962,6 +989,7 @@ paths:
       tags:
         - Users
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -1002,6 +1030,7 @@ paths:
       tags:
         - Users
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -1042,6 +1071,7 @@ paths:
       tags:
         - Users
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -1082,6 +1112,7 @@ paths:
       tags:
         - Users
       security:
+        - BasicAuth: []
         - ApiKey: []
           BearerAuth: []
       parameters:
@@ -1587,6 +1618,9 @@ components:
           format: date-time
           description: When the response was generated
   securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
     ApiKey:
       type: apiKey
       name: x-api-key
