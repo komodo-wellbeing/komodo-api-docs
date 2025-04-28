@@ -64,6 +64,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -96,6 +97,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: check_in_id
           in: path
@@ -128,6 +130,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -160,6 +163,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: group_id
           in: path
@@ -191,6 +195,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: group_id
           in: path
@@ -232,6 +237,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -264,6 +270,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: group_id
           in: path
@@ -295,6 +302,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: group_id
           in: path
@@ -336,6 +344,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -368,6 +377,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: metric_id
           in: path
@@ -400,6 +410,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: org_id
           in: path
@@ -432,6 +443,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -464,6 +476,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: blueprint_id
           in: path
@@ -496,6 +509,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -528,6 +542,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: question_id
           in: path
@@ -559,6 +574,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -591,6 +607,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: question_id
           in: path
@@ -623,6 +640,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -657,6 +675,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: response_id
           in: path
@@ -689,6 +708,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -723,6 +743,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: response_id
           in: path
@@ -755,6 +776,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -789,6 +811,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: survey_id
           in: path
@@ -821,6 +844,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -853,6 +877,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: user_id
           in: path
@@ -884,6 +909,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: user_id
           in: path
@@ -924,6 +950,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: user_id
           in: path
@@ -964,6 +991,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: user_id
           in: path
@@ -1004,6 +1032,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: user_id
           in: path
@@ -1044,6 +1073,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: user_id
           in: path
@@ -1084,6 +1114,7 @@ paths:
       security:
         - ApiKey: []
           BearerAuth: []
+        - BasicAuth: []
       parameters:
         - name: user_id
           in: path
@@ -1594,3 +1625,6 @@ components:
     BearerAuth:
       type: http
       scheme: bearer
+    BasicAuth:
+      type: http
+      scheme: basic
