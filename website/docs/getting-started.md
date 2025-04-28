@@ -4,11 +4,33 @@ title: Getting Started
 slug: /getting-started/
 ---
 
-To access the API you need to obtain an integration API key in Komodo. This can be done by
+To access the API you need to obtain API credentials in Komodo. This can be done by
 either:
 
--   Contacting Komodo to issue an organisation-based API key.
--   Generating an organisation-based API key in Komodo via Settings > Integrations > Create an Integration > Custom.
+-   Contacting Komodo to issue organisation-based API credentials.
+-   Generating organisation-based API credentials in Komodo via Settings > Integrations > Create an Integration > Custom.
+
+## Authentication
+
+There are currently 2 supported methods of authentication.
+
+### Basic authentication
+
+The simplest method is using Basic authentication with the API credentials from Komodo.
+
+#### Process
+
+1. Use the API credentials as Basic authentication to make requests to any API endpoint.
+
+### Bearer token
+
+You can also generate a short-lived Bearer token from the [authentication endpoint](./rest/v1/authenticate.api.mdx). This can be used as authentication to any API endpoint, alongside the API key.
+
+#### Process
+
+1. Create an API key by combining the API credentials in the format `<username>:<password>`.
+1. Use the API key to make a request to the [authentication endpoint](./rest/v1/authenticate.api.mdx). This will return a Bearer token.
+1. Use the API key & Bearer token to make requests to any other API endpoints.
 
 ## Environments
 
