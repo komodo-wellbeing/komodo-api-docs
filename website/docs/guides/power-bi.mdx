@@ -5,7 +5,65 @@ slug: /power-bi/
 hide_title: true
 ---
 
-import PowerBILogo from '@site/static/img/power-bi-logo.png';
+import CodeBlock from '@theme/CodeBlock';
 import IntegrationGuideHeading from '@site/src/components/IntegrationGuideHeading';
+import PowerBILogo from '@site/static/img/power-bi-logo.png';
 
 <IntegrationGuideHeading title={'Power BI'} logo={PowerBILogo} />
+
+## Setup
+
+TODO: Setup instructions here.
+
+## Pagination
+
+Any API endpoints returning a list of records are paginated using cursor-based pagination. This means you may have to make multiple requests to get all of the data you're wanting.
+
+Below is an example query which will fetch all pages of users. You can use this as a template for fetching other paginated data.
+
+```powerquery showLineNumbers
+let
+    // Change the below values based on the API endpoint you're wanting to use
+    BASE_URL = "https://us.east1.api.komodowellbeing.com/rest/v1/users",
+    COLUMNS = {"id", "email", "created_at", "firstname", "lastname", "role"},
+    COLUMN_TYPES = {
+        {"id", Int64.Type},
+        {"email", type text},
+        {"created_at", type datetime},
+        {"firstname", type text},
+        {"lastname", type text},
+        {"role", type text}
+    },
+
+    // Function for fetching a page with cursor-based pagination
+    GetPage = (cursor as nullable text) =>
+        let
+            // Append the cursor to the URL if we have one
+            url = if cursor <> null then BASE_URL & "?cursor=" & cursor else BASE_URL,
+            Source = Json.Document(Web.Contents(url)),
+            data = Source[data],
+            // Cast to text for compatibility with GetPage
+            nextCursor = if Source[cursor] <> null then Text.From(Source[cursor]) else null,
+            #"Converted to Table" = Table.FromRecords({Source})
+        in
+            [Data = data, NextCursor = nextCursor],
+    allPages = List.Generate(
+    // First request with no cursor
+    () => GetPage(null),
+    // Repeat until we receive a null cursor
+    each [NextCursor] <> null,
+    // Fetch the next page
+    each GetPage([NextCursor]),
+    // Return the data only
+    each [Data]),
+    // Combine all page data into a single list
+    allData = List.Combine(allPages),
+
+    // Convert data to a table with types
+    #"Converted to Table" = Table.FromList(allData, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+    #"Expanded Column1" = Table.ExpandRecordColumn(#"Converted to Table", "Column1", COLUMNS),
+    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Column1", COLUMN_TYPES)
+
+in
+    #"Changed Type"
+```

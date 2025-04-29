@@ -86,6 +86,7 @@ const config: Config = {
         prism: {
             theme: lightCodeTheme,
             darkTheme: darkCodeTheme,
+            additionalLanguages: ['powerquery'],
         },
     } satisfies Preset.ThemeConfig,
 };
