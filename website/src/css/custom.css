@@ -28,3 +28,17 @@
     --ifm-color-primary-lightest: rgb(146, 224, 208);
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* Add logos to integration guide menu items */
+.guide-menu-item a::before {
+    background-size: 1em 1em;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    content: '';
+    padding-right: 0.4em;
+}
+.guide-menu-item.guide-menu-item-power-bi a::before {
+    background-image: url(../../static/img/power-bi-logo.png);
+}
