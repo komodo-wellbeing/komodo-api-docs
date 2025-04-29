@@ -40,5 +40,5 @@
     padding-right: 0.4em;
 }
 .guide-menu-item.guide-menu-item-power-bi a::before {
-    background-image: url(../../static/img/power-bi-logo.png);
+    background-image: url(../../static/img/guides/power-bi/logo.png);
 }
