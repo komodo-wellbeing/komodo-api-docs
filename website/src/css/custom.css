@@ -42,3 +42,8 @@
 .guide-menu-item.guide-menu-item-power-bi a::before {
     background-image: url(../../static/img/guides/power-bi/logo.png);
 }
+
+.theme-code-block-highlighted-line {
+    /* Override display: block from differently-ordered CSS in production build */
+    display: table-row !important;
+}
