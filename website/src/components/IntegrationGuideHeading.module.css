@@ -1,0 +1,9 @@
+.heading {
+    display: flex;
+    align-items: center;
+
+    img {
+        height: 1em;
+        margin-right: 0.25em;
+    }
+}
