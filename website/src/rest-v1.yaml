@@ -1294,6 +1294,44 @@ components:
           type: string
           format: date-time
           description: When the follow up was created
+        # type: 'null' is invalid in 3.x.x spec, but fails with valid nullable: true w/o a type declared
+        # See https://github.com/ajv-validator/ajv/issues/2283#issuecomment-2233931663
+        note:
+          oneOf:
+            - $ref: '#/components/schemas/PastoralNote'
+            - type: 'null'
+          description: The note left on this follow up
+        questions:
+          oneOf:
+            - $ref: '#/components/schemas/CheckInFollowUpQuestions'
+            - type: 'null'
+          description: The questions for this follow up, and their responses left
+    PastoralNote:
+      type: object
+      properties:
+        note:
+          type: string
+          description: The note left
+        quick_note:
+          type: boolean
+          description: The user submitted a quick note, rather than filling out the contextual form
+    CheckInFollowUpQuestions:
+      type: array
+      items:
+        $ref: '#/components/schemas/CheckInFollowUpQuestion'
+    CheckInFollowUpQuestion:
+      type: object
+      properties:
+        question:
+          type: string
+          description: The question prompted to the user making the follow up
+        description:
+          type: string
+          description: More information about the question
+        answer:
+          type: string
+          nullable: true
+          description: The answer to the question left by the user making the follow up
 
     Groups:
       type: array
