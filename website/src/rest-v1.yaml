@@ -62,9 +62,9 @@ paths:
       tags:
         - Check-ins
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -95,9 +95,9 @@ paths:
       tags:
         - Check-ins
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: check_in_id
           in: path
@@ -128,9 +128,9 @@ paths:
       tags:
         - Groups
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -161,9 +161,9 @@ paths:
       tags:
         - Groups
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: group_id
           in: path
@@ -193,9 +193,9 @@ paths:
       tags:
         - Groups
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: group_id
           in: path
@@ -235,9 +235,9 @@ paths:
       tags:
         - Groups
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -268,9 +268,9 @@ paths:
       tags:
         - Groups
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: group_id
           in: path
@@ -300,9 +300,9 @@ paths:
       tags:
         - Groups
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: group_id
           in: path
@@ -342,9 +342,9 @@ paths:
       tags:
         - Metrics
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -375,9 +375,9 @@ paths:
       tags:
         - Metrics
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: metric_id
           in: path
@@ -408,9 +408,9 @@ paths:
       tags:
         - Organisations
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: org_id
           in: path
@@ -441,9 +441,9 @@ paths:
       tags:
         - Survey Blueprints
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -474,9 +474,9 @@ paths:
       tags:
         - Survey Blueprints
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: blueprint_id
           in: path
@@ -507,9 +507,9 @@ paths:
       tags:
         - Survey Library
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -540,9 +540,9 @@ paths:
       tags:
         - Survey Library
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: question_id
           in: path
@@ -572,9 +572,9 @@ paths:
       tags:
         - Survey Library
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -605,9 +605,9 @@ paths:
       tags:
         - Survey Library
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: question_id
           in: path
@@ -638,9 +638,9 @@ paths:
       tags:
         - Survey Responses
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -673,9 +673,9 @@ paths:
       tags:
         - Survey Responses
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: response_id
           in: path
@@ -706,9 +706,9 @@ paths:
       tags:
         - Survey Responses
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -741,9 +741,9 @@ paths:
       tags:
         - Survey Responses
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: response_id
           in: path
@@ -774,9 +774,9 @@ paths:
       tags:
         - User Surveys
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -809,9 +809,9 @@ paths:
       tags:
         - User Surveys
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: survey_id
           in: path
@@ -842,9 +842,9 @@ paths:
       tags:
         - Users
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - $ref: '#/components/parameters/PaginationLimit'
         - $ref: '#/components/parameters/PaginationCursor'
@@ -875,9 +875,9 @@ paths:
       tags:
         - Users
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: user_id
           in: path
@@ -907,9 +907,9 @@ paths:
       tags:
         - Users
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: user_id
           in: path
@@ -948,9 +948,9 @@ paths:
       tags:
         - Users
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: user_id
           in: path
@@ -989,9 +989,9 @@ paths:
       tags:
         - Users
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: user_id
           in: path
@@ -1030,9 +1030,9 @@ paths:
       tags:
         - Users
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: user_id
           in: path
@@ -1071,9 +1071,9 @@ paths:
       tags:
         - Users
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: user_id
           in: path
@@ -1112,9 +1112,9 @@ paths:
       tags:
         - Users
       security:
+        - BearerAuth: []
+          ApiKey: []
         - BasicAuth: []
-        - ApiKey: []
-          BearerAuth: []
       parameters:
         - name: user_id
           in: path
@@ -1290,6 +1290,9 @@ components:
         check_in_id:
           type: number
           description: The initial check-in's ID in Komodo Wellbeing
+        user_id:
+          type: number
+          description: The ID of the user that created this follow up in Komodo Wellbeing
         created_at:
           type: string
           format: date-time
