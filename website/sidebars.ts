@@ -6,7 +6,6 @@ const sidebars: SidebarsConfig = {
     docs: {
         Introduction: ['introduction', 'getting-started', 'dictionary'],
         'REST API': [restv1],
-        'Cube API (Deprecated)': ['cube', 'cube-auth', 'cube-meta', 'cube-load', 'cube-troubleshooting'],
         'Integration Guides': [guides],
     },
 };
