@@ -401,8 +401,35 @@ paths:
         500:
           $ref: '#/components/responses/ServerError'
 
+  /organisation:
+    get:
+      summary: Get your organisation
+      description: Get your organisation in Komodo Wellbeing. You only have access to the organisation your API key is associated with.
+      tags:
+        - Organisations
+      security:
+        - BearerAuth: []
+          ApiKey: []
+        - BasicAuth: []
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organisation'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
   /organisations/{org_id}:
     get:
+      deprecated: true
       summary: Get organisation
       description: Get an organisation in Komodo Wellbeing. You only have access to the organisation your API key is associated with.
       tags:
