@@ -4,7 +4,7 @@ import restv1 from './docs/rest/v1/sidebar';
 
 const sidebars: SidebarsConfig = {
     docs: {
-        Introduction: ['introduction', 'getting-started', 'dictionary'],
+        Introduction: ['getting-started', 'dictionary'],
         'REST API': [restv1],
         'Integration Guides': [guides],
     },

@@ -8,7 +8,7 @@ const lightCodeTheme = themes.palenight;
 const darkCodeTheme = themes.dracula;
 
 const config: Config = {
-    title: 'Komodo API',
+    title: 'Komodo Customer API',
     favicon: 'img/logo.png',
 
     url: 'https://komodo-wellbeing.github.io',
@@ -67,7 +67,7 @@ const config: Config = {
 
     themeConfig: {
         navbar: {
-            title: 'Komodo API',
+            title: 'Komodo Customer API',
             logo: {
                 src: 'img/logo.png',
             },

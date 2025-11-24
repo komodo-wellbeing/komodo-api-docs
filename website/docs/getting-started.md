@@ -1,7 +1,7 @@
 ---
 id: getting-started
 title: Getting Started
-slug: /getting-started/
+slug: /
 ---
 
 To access the API you need to obtain API credentials in Komodo. This can be done by
