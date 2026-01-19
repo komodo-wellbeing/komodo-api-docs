@@ -1173,6 +1173,77 @@ paths:
           $ref: '#/components/responses/NotFound'
         500:
           $ref: '#/components/responses/ServerError'
+  /users/overall_wellbeing:
+    get:
+      summary: Get overall wellbeing
+      description: |
+        Get overall wellbeing for all users in the current organisation.
+
+        Overall wellbeing is calculated based on survey responses across the last 100 days.
+      tags:
+        - Users
+      security:
+        - BearerAuth: []
+          ApiKey: []
+        - BasicAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationCursor'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/UsersOverallWellbeing'
+                  count: number
+                  has_prev: boolean
+                  has_next: boolean
+                  cursor: number
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /users/{user_id}/overall_wellbeing:
+    get:
+      summary: Get user overall wellbeing
+      description: |
+        Get overall wellbeing for a user in the current organisation.
+
+        Overall wellbeing is calculated based on survey responses across the last 100 days.
+      tags:
+        - Users
+      security:
+        - BearerAuth: []
+          ApiKey: []
+        - BasicAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: The ID of the user
+          schema:
+            type: number
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserOverallWellbeing'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
 
 components:
   parameters:
@@ -1707,6 +1778,33 @@ components:
           type: string
           format: date-time
           description: When the response was generated
+    UserOverallWellbeing:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The user's ID in Komodo Wellbeing
+        percentage:
+          type: number
+          minimum: 0
+          maximum: 100
+          nullable: true
+          description: The user's overall wellbeing score for the last 100 days. This will be null if there have been no survey responses in the last 100 days.
+        latest_response:
+          type: string
+          format: date
+          nullable: true
+          description: The date of the user's latest survey response in the last 100 days. This will be null if there have been no survey responses in the last 100 days.
+        trend:
+          type: number
+          minimum: -100
+          maximum: 100
+          nullable: true
+          description: The percentage change between the latest survey response and other surveys in the last 100 days. This will be null if there are no other survey responses in the last 100 days.
+    UsersOverallWellbeing:
+      type: array
+      items:
+        $ref: '#/components/schemas/UserOverallWellbeing'
   securitySchemes:
     BasicAuth:
       type: http
