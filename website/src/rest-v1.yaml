@@ -1797,8 +1797,6 @@ components:
           description: The date of the user's latest survey response in the last 100 days. This will be null if there have been no survey responses in the last 100 days.
         trend:
           type: number
-          minimum: -100
-          maximum: 100
           nullable: true
           description: The percentage change between the latest survey response and other surveys in the last 100 days. This will be null if there are no other survey responses in the last 100 days.
     UsersOverallWellbeing:
