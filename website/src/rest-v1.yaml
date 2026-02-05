@@ -1773,7 +1773,7 @@ components:
           description: The metric ID that this normalised response has been generated for in Komodo Wellbeing
         score:
           type: number
-          description: The normalised score 1-10
+          description: The normalised score 0-10
         created_at:
           type: string
           format: date-time
