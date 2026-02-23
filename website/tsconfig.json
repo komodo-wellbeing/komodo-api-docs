@@ -4,5 +4,6 @@
     "compilerOptions": {
         "baseUrl": "."
     },
-    "include": ["./sidebars.ts", "./docusaurus.config.ts", "./src", "./docs"]
+    "include": ["./"],
+    "exclude": ["./static", "./build"]
 }
