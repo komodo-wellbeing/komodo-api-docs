@@ -4,6 +4,5 @@
     "compilerOptions": {
         "baseUrl": "."
     },
-    // See https://github.com/PaloAltoNetworks/docusaurus-openapi-docs/issues/1015
-    "include": ["./node_modules/docusaurus-plugin-openapi-docs/src/plugin-content-docs-types.d.ts"]
+    "include": ["./sidebars.ts", "./docusaurus.config.ts", "./src", "./docs"]
 }
