@@ -3,6 +3,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 
+import { JSX } from 'react';
 import styles from './index.module.css';
 
 function HomepageHeader() {
@@ -23,7 +24,6 @@ function HomepageHeader() {
 }
 
 export default function Home(): JSX.Element {
-    const { siteConfig } = useDocusaurusContext();
     return (
         <Layout title={`Home`} description="Komodo Customer API Documentation">
             <HomepageHeader />

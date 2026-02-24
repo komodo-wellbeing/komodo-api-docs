@@ -1,7 +1,7 @@
 {
     "private": true,
     "scripts": {
-        "start:dev": "docusaurus start --no-open --port 3002",
+        "dev": "docusaurus start --no-open --port 3002",
         "openapi:pull": "cp ../../komodo-api/src/api/rest/v1/openapi.yaml src/rest-v1.yaml",
         "openapi:gen": "docusaurus clean-api-docs rest-v1 && docusaurus gen-api-docs rest-v1",
         "build": "npm run openapi:gen && docusaurus build",
@@ -9,8 +9,8 @@
         "typecheck": "tsc"
     },
     "dependencies": {
-        "@docusaurus/core": "3.7.0",
-        "@docusaurus/preset-classic": "3.7.0",
+        "@docusaurus/core": "^3.9.2",
+        "@docusaurus/preset-classic": "^3.9.2",
         "@mdx-js/react": "^3.0.0",
         "clsx": "^1.2.1",
         "docusaurus-plugin-openapi-docs": "^4.7.1",
@@ -20,8 +20,8 @@
         "react-dom": "^19.0.0"
     },
     "devDependencies": {
-        "@docusaurus/module-type-aliases": "3.7.0",
-        "@docusaurus/tsconfig": "^3.7.0",
+        "@docusaurus/module-type-aliases": "^3.9.2",
+        "@docusaurus/tsconfig": "^3.9.2",
         "@types/react": "^19.0.0",
         "typescript": "^5.2.2"
     },
@@ -38,6 +38,6 @@
         ]
     },
     "engines": {
-        "node": ">=18.17"
+        "node": ">=24.0.0 <25.0.0"
     }
 }
