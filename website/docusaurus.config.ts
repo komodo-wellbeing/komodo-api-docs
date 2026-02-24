@@ -19,7 +19,11 @@ const config: Config = {
     projectName: 'komodo-api-docs.github.io',
 
     onBrokenLinks: 'throw',
-    onBrokenMarkdownLinks: 'warn',
+    markdown: {
+        hooks: {
+            onBrokenMarkdownLinks: 'warn',
+        },
+    },
 
     i18n: {
         defaultLocale: 'en',
