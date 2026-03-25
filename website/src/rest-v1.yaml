@@ -1332,6 +1332,7 @@ components:
         tier:
           $ref: '#/components/schemas/Tier'
           description: The risk to wellbeing of this check-in
+          deprecated: true
         comment:
           type: string
           nullable: true
@@ -1491,6 +1492,7 @@ components:
         tier:
           $ref: '#/components/schemas/Tier'
           description: The risk to wellbeing associated with this metric
+          deprecated: true
 
     MetricThemes:
       type: array
@@ -1640,6 +1642,7 @@ components:
 
     Tier:
       type: object
+      deprecated: true
       properties:
         tier_id:
           type: number
