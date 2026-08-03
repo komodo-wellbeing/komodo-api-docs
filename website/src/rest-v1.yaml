@@ -1331,7 +1331,8 @@ components:
               * MANUAL This check-in is a pastoral note left by a staff member
         tier:
           $ref: '#/components/schemas/Tier'
-          description: The risk to wellbeing of this check-in
+          description: >
+            **This field is deprecated, and its value should be ignored**
           deprecated: true
         comment:
           type: string
@@ -1491,7 +1492,8 @@ components:
           description: The themes that this metric is a part of
         tier:
           $ref: '#/components/schemas/Tier'
-          description: The risk to wellbeing associated with this metric
+          description: >
+            **This field is deprecated, and its value should be ignored**
           deprecated: true
 
     MetricThemes:
