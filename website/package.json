@@ -13,8 +13,8 @@
         "@docusaurus/preset-classic": "^3.9.2",
         "@mdx-js/react": "^3.0.0",
         "clsx": "^1.2.1",
-        "docusaurus-plugin-openapi-docs": "^4.7.1",
-        "docusaurus-theme-openapi-docs": "^4.7.1",
+        "docusaurus-plugin-openapi-docs": "^5.2.0",
+        "docusaurus-theme-openapi-docs": "^5.2.0",
         "prism-react-renderer": "^2.1.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0"
